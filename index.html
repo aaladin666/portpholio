@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Prabhjot Singh Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.134/examples/js/controls/OrbitControls.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+background:#05060a;
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+height:70px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 6%;
+background:rgba(5,6,10,.7);
+backdrop-filter:blur(12px);
+z-index:100;
+}
+
+.logo{
+font-size:20px;
+font-weight:600;
+background:linear-gradient(90deg,#00ffc3,#4d7cff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+nav ul{
+display:flex;
+gap:28px;
+list-style:none;
+}
+
+.cta{
+background:linear-gradient(90deg,#00ffc3,#4d7cff);
+padding:10px 20px;
+border-radius:25px;
+color:black;
+text-decoration:none;
+font-weight:600;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+padding:120px 6% 60px 6%;
+gap:40px;
+}
+
+.hero-text{
+max-width:600px;
+}
+
+.hero-text h1{
+font-size:clamp(36px,5vw,64px);
+line-height:1.1;
+margin-bottom:20px;
+}
+
+.hero-text span{
+background:linear-gradient(90deg,#00ffc3,#4d7cff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.hero-text p{
+color:#9aa1ad;
+margin-bottom:30px;
+}
+
+.buttons{
+display:flex;
+gap:14px;
+}
+
+.btn{
+padding:12px 26px;
+border-radius:30px;
+border:none;
+font-weight:600;
+cursor:pointer;
+}
+
+.primary{
+background:linear-gradient(90deg,#00ffc3,#4d7cff);
+color:black;
+}
+
+.secondary{
+background:#10131a;
+border:1px solid #202430;
+color:white;
+}
+
+.hero-visual{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+#three-area{
+width:100%;
+max-width:360px;
+aspect-ratio:1/1;
+}
+
+/* FLOATING CARDS */
+
+.stats-cards{
+display:grid;
+grid-template-columns:repeat(2,140px);
+gap:12px;
+margin-top:20px;
+}
+
+.card{
+background:#0d1118;
+padding:16px;
+border-radius:14px;
+text-align:center;
+box-shadow:0 20px 50px rgba(0,0,0,.8);
+animation:float 6s ease-in-out infinite;
+}
+
+.card h3{
+font-size:22px;
+background:linear-gradient(90deg,#00ffc3,#4d7cff);
+-webkit-background-clip:text;
+color:transparent;
+}
+
+.card p{
+font-size:12px;
+color:#8a91a0;
+}
+
+@keyframes float{
+
+0%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+100%{transform:translateY(0)}
+
+}
+
+/* SCROLL REVEAL */
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+transition:all 1s ease;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* SERVICES */
+
+.services{
+padding:80px 6%;
+}
+
+.services h2{
+text-align:center;
+margin-bottom:40px;
+font-size:34px;
+}
+
+.service-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:24px;
+}
+
+.service-card{
+background:#0d1118;
+padding:28px;
+border-radius:16px;
+transition:.3s;
+}
+
+.service-card:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 60px rgba(0,0,0,.8);
+}
+
+.service-card p{
+color:#9aa1ad;
+font-size:14px;
+}
+
+/* PROJECTS */
+
+.portfolio{
+padding:80px 6%;
+text-align:center;
+}
+
+.project-grid{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:16px;
+margin-top:20px;
+}
+
+.project-grid button{
+padding:14px 28px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#00ffc3,#4d7cff);
+font-weight:600;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:30px;
+border-top:1px solid #141821;
+color:#8a91a0;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+}
+
+.buttons{
+justify-content:center;
+}
+
+.hero-visual{
+margin:auto;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">Prabhjot</div>
+
+<ul>
+<li>Home</li>
+<li>Services</li>
+<li>Portfolio</li>
+<li>Contact</li>
+</ul>
+
+<a class="cta" href="https://wa.me/918437904991">Hire Me</a>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1 id="typingText"></h1>
+
+<p>
+Digital creator helping brands grow using modern websites, promotional videos and marketing automation systems.
+</p>
+
+<div class="buttons">
+
+<button class="btn primary">Start Project</button>
+<button class="btn secondary">See My Work</button>
+
+</div>
+
+</div>
+
+<div class="hero-visual">
+
+<div id="three-area"></div>
+
+<div class="stats-cards">
+
+<div class="card">
+<h3 class="counter" data-target="20">0</h3>
+<p>Projects</p>
+</div>
+
+<div class="card">
+<h3 class="counter" data-target="100">0</h3>
+<p>Client Focus</p>
+</div>
+
+<div class="card">
+<h3>Web</h3>
+<p>Development</p>
+</div>
+
+<div class="card">
+<h3>Ads</h3>
+<p>Marketing</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="services reveal">
+
+<h2>Services</h2>
+
+<div class="service-grid">
+
+<div class="service-card">
+<h3>Website Development</h3>
+<p>Business websites and landing pages built using modern platforms.</p>
+</div>
+
+<div class="service-card">
+<h3>Promotional Videos</h3>
+<p>High converting promotional videos for social media campaigns.</p>
+</div>
+
+<div class="service-card">
+<h3>Banner Design</h3>
+<p>Professional marketing posters and creatives for ads.</p>
+</div>
+
+<div class="service-card">
+<h3>Lead Generation</h3>
+<p>Meta ads campaigns and automation systems that generate leads.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- PROJECTS -->
+
+<section class="portfolio reveal">
+
+<h2>Portfolio</h2>
+
+<div class="project-grid">
+
+<button onclick="window.open('#')">Sample Websites</button>
+<button onclick="window.open('#')">Sample Videos</button>
+<button onclick="window.open('#')">Sample Posters</button>
+
+</div>
+
+</section>
+
+<footer>
+
+© 2026 Prabhjot Singh — Digital Creator
+
+</footer>
+
+<script>
+
+/* TYPING ANIMATION */
+
+const text="I Build Websites, Ads & Growth Systems For Businesses";
+
+let i=0;
+
+function type(){
+
+if(i<text.length){
+
+document.getElementById("typingText").innerHTML += text.charAt(i);
+
+i++;
+
+setTimeout(type,50);
+
+}
+
+}
+
+type();
+
+/* NUMBER COUNTER */
+
+const counters=document.querySelectorAll(".counter");
+
+counters.forEach(counter=>{
+
+const target=+counter.dataset.target;
+
+let count=0;
+
+const speed=200;
+
+function update(){
+
+const inc=target/speed;
+
+if(count<target){
+
+count+=inc;
+
+counter.innerText=Math.ceil(count)+"+";
+
+requestAnimationFrame(update);
+
+}
+
+else{
+
+counter.innerText=target+"+";
+
+}
+
+}
+
+update();
+
+});
+
+/* SCROLL REVEAL */
+
+function reveal(){
+
+const reveals=document.querySelectorAll(".reveal");
+
+reveals.forEach(el=>{
+
+const windowHeight=window.innerHeight;
+
+const elementTop=el.getBoundingClientRect().top;
+
+if(elementTop<windowHeight-100){
+
+el.classList.add("active");
+
+}
+
+});
+
+}
+
+window.addEventListener("scroll",reveal);
+
+reveal();
+
+/* 3D OBJECT */
+
+const container=document.getElementById("three-area");
+
+const scene=new THREE.Scene();
+
+const camera=new THREE.PerspectiveCamera(75,1,0.1,1000);
+
+const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
+
+const size=container.clientWidth;
+
+renderer.setSize(size,size);
+
+container.appendChild(renderer.domElement);
+
+const geometry=new THREE.TorusKnotGeometry(1.2,0.4,120,18);
+
+const material=new THREE.MeshStandardMaterial({
+color:0x00ffc3,
+metalness:.9,
+roughness:.2
+});
+
+const mesh=new THREE.Mesh(geometry,material);
+
+scene.add(mesh);
+
+const light1=new THREE.PointLight(0xffffff,1);
+
+light1.position.set(5,5,5);
+
+scene.add(light1);
+
+const light2=new THREE.PointLight(0x4d7cff,2);
+
+light2.position.set(-5,-5,5);
+
+scene.add(light2);
+
+camera.position.z=3;
+
+const controls=new THREE.OrbitControls(camera,renderer.domElement);
+
+controls.enableZoom=false;
+
+controls.autoRotate=true;
+
+function animate(){
+
+requestAnimationFrame(animate);
+
+mesh.rotation.y+=0.01;
+
+renderer.render(scene,camera);
+
+}
+
+animate();
+
+</script>
+
+</body>
+</html>
